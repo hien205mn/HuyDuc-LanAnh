@@ -716,7 +716,7 @@ audio {
 }
 
 .pt2-calendar-wrapper .pt2-image-card img {
-  width: 100%;
+  width: 90%;
   height: auto;         /* bỏ ép 360px, để tự theo tỉ lệ ảnh */
   display: block;
   object-fit: contain;  /* hoặc có thể bỏ dòng này nếu muốn */
@@ -1382,3 +1382,4 @@ body.show-main #main-content {
     font-size: 1rem;
   }
 }
+
