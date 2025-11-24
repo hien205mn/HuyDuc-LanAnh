@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <audio autoplay src="Until I Found You.mp3"></audio>
+  <audio id="bg-music" src="Until I Found You.mp3" loop></audio>
 
   <!-- INTRO OVERLAY -->
   <div id="intro-overlay">
@@ -304,24 +304,32 @@
   </div><!-- /#main-content -->
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const overlay = document.getElementById('intro-overlay');
-      const openWindow = document.getElementById('open-window');
+   document.addEventListener('DOMContentLoaded', function () {
+  const overlay = document.getElementById('intro-overlay');
+  const openWindow = document.getElementById('open-window');
+  const bgMusic = document.getElementById('bg-music');
 
-      if (overlay && openWindow) {
-        openWindow.addEventListener('click', function () {
-          openWindow.classList.add('clicked');
-          document.body.classList.add('show-main');
+  if (overlay && openWindow) {
+    openWindow.addEventListener('click', function () {
+      openWindow.classList.add('clicked');
+      document.body.classList.add('show-main');
 
-          setTimeout(() => {
-            overlay.classList.add('opened');
-          }, 200);
-
-          setTimeout(() => {
-            overlay.style.display = 'none';
-          }, 1400);
+      // 👉 Phát nhạc sau khi người dùng click (được phép)
+      if (bgMusic) {
+        bgMusic.play().catch(err => {
+          console.log('Cannot play audio:', err);
         });
       }
+
+      setTimeout(() => {
+        overlay.classList.add('opened');
+      }, 200);
+
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 1400);
+    });
+  }
 
       const pt1Envelope = document.querySelector('.pt1-envelope');
       if (pt1Envelope) {
@@ -409,4 +417,5 @@
   </script>
 </body>
 </html>
+
 
